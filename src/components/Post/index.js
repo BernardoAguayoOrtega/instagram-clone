@@ -6,23 +6,25 @@ import { Image, PostContainer, PostText, PostHeader } from './styles';
 import { Avatar } from '@material-ui/core';
 
 //create post component and export it
-export const Post = () => {
+export const Post = ({ userName, caption, imageUrl }) => {
 	return (
 		<>
 			{/*Post container*/}
 			<PostContainer>
 				{/*Post header with avatar an text*/}
 				<PostHeader>
-					<Avatar alt={'Bernardo Aguayo'} src='/static/images/avatar/1.jpg' />
-					<PostText>UserName</PostText>
+					<Avatar alt={userName} src='/static/images/avatar/1.jpg' />
+					<PostText>
+						<strong>{userName}</strong>
+					</PostText>
 				</PostHeader>
 
 				{/*Image of the post*/}
-				<Image src='https://colorlib.com/wp/wp-content/uploads/sites/2/react-dev-tools-logo.jpg' />
+				<Image src={imageUrl} />
 
 				{/*Text below image*/}
 				<PostText>
-					<strong>UserName: </strong> some text
+					<strong>{`${userName}: `}</strong> {caption}
 				</PostText>
 			</PostContainer>
 		</>
