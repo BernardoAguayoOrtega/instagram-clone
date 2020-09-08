@@ -16,3 +16,8 @@ export const Image = styled.img`
 export const PostText = styled.h3`
   font-weight: normal;
 `
+
+//create and export post header
+export const PostHeader = styled.header`
+  
+`
