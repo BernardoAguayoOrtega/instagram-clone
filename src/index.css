@@ -3,3 +3,8 @@
   margin:0;
   padding:0;
 }
+
+/*set rem size*/
+html{
+  font-size: 10px
+}
