@@ -23,3 +23,6 @@ export const storage = firebase.storage();
 
 //export data base
 export const auth = firebase.auth();
+
+//export timestamp
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp
