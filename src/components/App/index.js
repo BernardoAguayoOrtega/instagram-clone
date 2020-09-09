@@ -6,13 +6,10 @@ import { AppContainer } from './styles';
 import { Header } from '../Header';
 //import posts
 import { Posts } from '../Posts';
-//import Modal component
-import { Modal } from '@material-ui/core';
 
 function App() {
 	return (
 		<AppContainer>
-			<Modal />
 			<Header />
 			<Posts />
 		</AppContainer>

@@ -1,48 +1,60 @@
 //import react
 import React, { useState } from 'react';
 //import material ui components
-import { Modal as ModalMUI, makeStyles } from '@material-ui/core';
+import { Modal as ModalMUI, makeStyles, Button } from '@material-ui/core';
 
-//modal logic
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
+/**
+ * @description: get the modal style (position)
+ */
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+	const top = 50;
+	const left = 50;
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
+	return {
+		top: `${top}%`,
+		left: `${left}%`,
+		transform: `translate(-${top}%, -${left}%)`,
+	};
 }
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+	paper: {
+		position: 'absolute',
+		width: '33%',
+		backgroundColor: theme.palette.background.paper,
+		border: '2px solid #000',
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+	},
 }));
 
-
-//create and export modal component
 export const Modal = () => {
-  //use state hook
-  const [open, setOpen] = useState(false);
-  //use styles hook
-  const classes = useStyles();
+	//use the custom hook useStyles
+	const classes = useStyles();
+	//use state hooks
+	const [modalStyle] = useState(getModalStyle);
+	const [open, setOpen] = useState(false);
+
+	//handle the open to modal
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
+	//handle the close to modal
+	const handleClose = () => {
+		setOpen(false);
+	};
 
 	return (
-		<ModalMUI open={open} onClose={() => setOpen(false)}>
-			<>
-				<h1>I'm the modal</h1>
-			</>
-		</ModalMUI>
+		<div>
+			<Button type='button' onClick={handleOpen}>
+				Sign Up
+			</Button>
+			<ModalMUI open={open} onClose={handleClose}>
+				<div style={modalStyle} className={classes.paper}>
+					<h1>I'm the modal!</h1>
+				</div>
+			</ModalMUI>
+		</div>
 	);
 };
