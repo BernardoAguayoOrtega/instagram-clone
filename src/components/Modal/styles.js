@@ -10,6 +10,6 @@ export const Figure = styled.figure`
 
 //create logo component and export it
 export const LogoContainer = styled.img`
-	width: 12rem;
+	width: 15rem;
   margin: 0 auto;
 `;

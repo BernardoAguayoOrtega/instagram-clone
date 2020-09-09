@@ -1,5 +1,9 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+//import the context
+import { Context } from '../../utils/Context';
+//import auth
+import { auth } from '../../utils/firebase';
 //import logo
 import Logo from '../../assets/Bernardogram.png';
 //import Logo container
@@ -50,9 +54,15 @@ export const Modal = () => {
 	//use state hooks
 	const [modalStyle] = useState(getModalStyle);
 	const [open, setOpen] = useState(false);
-	const [userName, setUserName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	//use context hook
+	const {
+		userName,
+		setUserName,
+		email,
+		setEmail,
+		password,
+		setPassword,
+	} = useContext(Context);
 
 	//handle the open to modal
 	const handleOpen = () => {
@@ -62,6 +72,15 @@ export const Modal = () => {
 	//handle the close to modal
 	const handleClose = () => {
 		setOpen(false);
+	};
+
+	//signUp function
+	const signUp = (e) => {
+		e.preventDefault();
+
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.catch((error) => alert(error.message));
 	};
 
 	return (
@@ -101,7 +120,7 @@ export const Modal = () => {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-						<Button type='button' onClick={handleClose}>
+						<Button type='submit' onClick={signUp}>
 							Sign Up
 						</Button>
 					</FormGroup>
