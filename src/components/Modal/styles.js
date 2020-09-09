@@ -15,6 +15,11 @@ export const LogoContainer = styled.img`
   margin: 0 auto;
 `;
 
+//create and export login container
+export const LoginContainer = styled.div`
+
+`;
+
 /**
  * @description: get the modal style (position)
  */

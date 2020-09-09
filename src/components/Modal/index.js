@@ -6,8 +6,14 @@ import { Context } from '../../utils/Context';
 import { auth } from '../../utils/firebase';
 //import logo
 import Logo from '../../assets/Bernardogram.png';
-//import Logo container
-import { LogoContainer, Figure, getModalStyle, useStyles } from './styles';
+//import styled components and logic
+import {
+	LogoContainer,
+	Figure,
+	LoginContainer,
+	getModalStyle,
+	useStyles,
+} from './styles';
 //import material ui components
 import { Modal as ModalMUI, Button, Input, FormGroup } from '@material-ui/core';
 
@@ -17,6 +23,7 @@ export const Modal = () => {
 	//use state hooks
 	const [modalStyle] = useState(getModalStyle);
 	const [open, setOpen] = useState(false);
+	const [OpenSignIn, setOpenSignIn] = useState('');
 	//use context hook
 	const {
 		userName,
@@ -28,16 +35,6 @@ export const Modal = () => {
 		user,
 		setUser,
 	} = useContext(Context);
-
-	//handle the open to modal
-	const handleOpen = () => {
-		setOpen(true);
-	};
-
-	//handle the close to modal
-	const handleClose = () => {
-		setOpen(false);
-	};
 
 	//signUp function
 	const signUp = (e) => {
@@ -51,6 +48,8 @@ export const Modal = () => {
 				});
 			})
 			.catch((error) => alert(error.message));
+
+		setOpen(false);
 	};
 
 	//listen the user
@@ -72,19 +71,24 @@ export const Modal = () => {
 	}, [setUser, userName]);
 
 	return (
-		<div>
+		<>
 			{/*Button to call the modal, depend of user display sign up or Log out*/}
 			{user ? (
 				<Button type='button' onClick={() => auth.signOut()}>
 					Logout
 				</Button>
 			) : (
-				<Button type='button' onClick={handleOpen}>
-					Sign Up
-				</Button>
+				<LoginContainer>
+					<Button type='button' onClick={() => setOpenSignIn(true)}>
+						Sign In
+					</Button>
+					<Button type='button' onClick={() => setOpen(true)}>
+						Sign Up
+					</Button>
+				</LoginContainer>
 			)}
 			{/*Modal from material ui but has ModalMUI name*/}
-			<ModalMUI open={open} onClose={handleClose}>
+			<ModalMUI open={open} onClose={() => setOpen(false)}>
 				<div style={modalStyle} className={classes.paper}>
 					{/*Figure and Logo from styled components*/}
 					<Figure>
@@ -120,6 +124,36 @@ export const Modal = () => {
 					</FormGroup>
 				</div>
 			</ModalMUI>
-		</div>
+			{/*Modal from material ui but has ModalMUI name and modal for sign in*/}
+			<ModalMUI open={OpenSignIn} onClose={() => setOpenSignIn(false)}>
+				<div style={modalStyle} className={classes.paper}>
+					{/*Figure and Logo from styled components*/}
+					<Figure>
+						<LogoContainer src={Logo} />
+					</Figure>
+					{/*Form group to style the inputs*/}
+					<FormGroup>
+						{/*Inputs*/}
+						<Input
+							className={classes.input}
+							type='text'
+							placeholder='Email'
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+						<Input
+							className={classes.input}
+							type='password'
+							placeholder='password'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<Button type='submit' onClick={signUp}>
+							Sign Up
+						</Button>
+					</FormGroup>
+				</div>
+			</ModalMUI>
+		</>
 	);
 };
