@@ -10,8 +10,21 @@ export const ContextProvider = ({ children }) => {
 	const [userName, setUserName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	
-	return <Context.Provider value={
-		{userName,setUserName,email,setEmail,password,setPassword}
-	}>{children}</Context.Provider>;
+	const [user, setUser] = useState(null);
+
+	return (
+		<Context.Provider
+			value={{
+				userName,
+				setUserName,
+				email,
+				setEmail,
+				password,
+				setPassword,
+				user,
+				setUser,
+			}}>
+			{children}
+		</Context.Provider>
+	);
 };

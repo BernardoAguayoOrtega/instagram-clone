@@ -25,6 +25,8 @@ export const Modal = () => {
 		setEmail,
 		password,
 		setPassword,
+		user,
+		setUser,
 	} = useContext(Context);
 
 	//handle the open to modal
@@ -43,17 +45,44 @@ export const Modal = () => {
 
 		auth
 			.createUserWithEmailAndPassword(email, password)
+			.then((authUser) => {
+				return authUser.user.updateProfile({
+					displayName: userName,
+				});
+			})
 			.catch((error) => alert(error.message));
 	};
 
 	//listen the user
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				//user has logged in
+				setUser(authUser);
+			} else {
+				//user has logged out
+				setUser(null);
+			}
+		});
+
+		return () => {
+			//perform some cleanup actions
+			unsubscribe();
+		};
+	}, [setUser, userName]);
 
 	return (
 		<div>
-			{/*Button to call the modal*/}
-			<Button type='button' onClick={handleOpen}>
-				Sign Up
-			</Button>
+			{/*Button to call the modal, depend of user display sign up or Log out*/}
+			{user ? (
+				<Button type='button' onClick={() => auth.signOut()}>
+					Logout
+				</Button>
+			) : (
+				<Button type='button' onClick={handleOpen}>
+					Sign Up
+				</Button>
+			)}
 			{/*Modal from material ui but has ModalMUI name*/}
 			<ModalMUI open={open} onClose={handleClose}>
 				<div style={modalStyle} className={classes.paper}>
