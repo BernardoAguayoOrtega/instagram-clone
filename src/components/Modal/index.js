@@ -23,7 +23,7 @@ export const Modal = () => {
 	//use state hooks
 	const [modalStyle] = useState(getModalStyle);
 	const [open, setOpen] = useState(false);
-	const [OpenSignIn, setOpenSignIn] = useState('');
+	const [OpenSignIn, setOpenSignIn] = useState(false);
 	//use context hook
 	const {
 		userName,
@@ -50,6 +50,17 @@ export const Modal = () => {
 			.catch((error) => alert(error.message));
 
 		setOpen(false);
+	};
+
+	//signIn function
+	const signIn = (e) => {
+		e.preventDefault();
+
+		auth
+			.signInWithEmailAndPassword(email, password)
+			.catch((error) => alert(error));
+
+		setOpenSignIn(false);
 	};
 
 	//listen the user
@@ -148,8 +159,8 @@ export const Modal = () => {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-						<Button type='submit' onClick={signUp}>
-							Sign Up
+						<Button type='submit' onClick={signIn}>
+							Sign In
 						</Button>
 					</FormGroup>
 				</div>
