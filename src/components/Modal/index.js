@@ -1,5 +1,9 @@
 //import react
 import React, { useState } from 'react';
+//import logo
+import Logo from '../../assets/Bernardogram.png';
+//import Logo container
+import { LogoContainer, Figure } from './styles';
 //import material ui components
 import {
 	Modal as ModalMUI,
@@ -48,7 +52,7 @@ export const Modal = () => {
 	const [open, setOpen] = useState(false);
 	const [userName, setUserName] = useState('');
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('false');
+	const [password, setPassword] = useState('');
 
 	//handle the open to modal
 	const handleOpen = () => {
@@ -69,6 +73,10 @@ export const Modal = () => {
 			{/*Modal from material ui but has ModalMUI name*/}
 			<ModalMUI open={open} onClose={handleClose}>
 				<div style={modalStyle} className={classes.paper}>
+					{/*Figure and Logo from styled components*/}
+					<Figure>
+						<LogoContainer src={Logo} />
+					</Figure>
 					{/*Form group to style the inputs*/}
 					<FormGroup>
 						{/*Inputs*/}
