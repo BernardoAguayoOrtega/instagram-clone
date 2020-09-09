@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 //import the context
 import { Context } from '../../utils/Context';
 //import auth
@@ -7,46 +7,9 @@ import { auth } from '../../utils/firebase';
 //import logo
 import Logo from '../../assets/Bernardogram.png';
 //import Logo container
-import { LogoContainer, Figure } from './styles';
+import { LogoContainer, Figure, getModalStyle, useStyles } from './styles';
 //import material ui components
-import {
-	Modal as ModalMUI,
-	makeStyles,
-	Button,
-	Input,
-	FormGroup,
-} from '@material-ui/core';
-
-/**
- * @description: get the modal style (position)
- */
-function getModalStyle() {
-	const top = 50;
-	const left = 50;
-
-	return {
-		top: `${top}%`,
-		left: `${left}%`,
-		transform: `translate(-${top}%, -${left}%)`,
-	};
-}
-
-/**
- * @description: use custom hook to set the styles
- */
-const useStyles = makeStyles((theme) => ({
-	paper: {
-		position: 'absolute',
-		width: '40%',
-		backgroundColor: theme.palette.background.paper,
-		border: '2px solid #000',
-		boxShadow: theme.shadows[5],
-		padding: theme.spacing(2, 4, 3),
-	},
-	input: {
-		fontSize: '2rem',
-	},
-}));
+import { Modal as ModalMUI, Button, Input, FormGroup } from '@material-ui/core';
 
 export const Modal = () => {
 	//use the custom hook useStyles
@@ -82,6 +45,8 @@ export const Modal = () => {
 			.createUserWithEmailAndPassword(email, password)
 			.catch((error) => alert(error.message));
 	};
+
+	//listen the user
 
 	return (
 		<div>
