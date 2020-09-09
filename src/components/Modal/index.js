@@ -90,10 +90,10 @@ export const Modal = () => {
 				</Button>
 			) : (
 				<LoginContainer>
-					<Button type='button' onClick={() => setOpenSignIn(true)}>
+					<Button color="primary" type='button' onClick={() => setOpenSignIn(true)}>
 						Sign In
 					</Button>
-					<Button type='button' onClick={() => setOpen(true)}>
+					<Button color="secondary" type='button' onClick={() => setOpen(true)}>
 						Sign Up
 					</Button>
 				</LoginContainer>

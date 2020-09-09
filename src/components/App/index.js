@@ -6,11 +6,14 @@ import { AppContainer } from './styles';
 import { Header } from '../Header';
 //import posts
 import { Posts } from '../Posts';
+//import image upload
+import { ImageUpload } from '../ImageUpload';
 
 function App() {
 	return (
 		<AppContainer>
 			<Header />
+			<ImageUpload />
 			<Posts />
 		</AppContainer>
 	);
