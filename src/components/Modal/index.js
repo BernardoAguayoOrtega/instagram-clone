@@ -6,7 +6,7 @@ import {
 	makeStyles,
 	Button,
 	Input,
-	FormControl,
+	FormGroup,
 } from '@material-ui/core';
 
 /**
@@ -23,15 +23,20 @@ function getModalStyle() {
 	};
 }
 
+/**
+ * @description: use custom hook to set the styles
+ */
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		position: 'absolute',
-		width: '50%',
+		width: '40%',
 		backgroundColor: theme.palette.background.paper,
 		border: '2px solid #000',
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
-		fontSize: '1.8rem !important',
+	},
+	input: {
+		fontSize: '2rem',
 	},
 }));
 
@@ -64,27 +69,34 @@ export const Modal = () => {
 			{/*Modal from material ui but has ModalMUI name*/}
 			<ModalMUI open={open} onClose={handleClose}>
 				<div style={modalStyle} className={classes.paper}>
-					<FormControl>
+					{/*Form group to style the inputs*/}
+					<FormGroup>
 						{/*Inputs*/}
 						<Input
+							className={classes.input}
 							type='text'
 							placeholder='User name'
 							value={userName}
 							onChange={(e) => setUserName(e.target.value)}
 						/>
 						<Input
+							className={classes.input}
 							type='text'
 							placeholder='Email'
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<Input
+							className={classes.input}
 							type='password'
 							placeholder='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-					</FormControl>
+						<Button type='button' onClick={handleClose}>
+							Sign Up
+						</Button>
+					</FormGroup>
 				</div>
 			</ModalMUI>
 		</div>
