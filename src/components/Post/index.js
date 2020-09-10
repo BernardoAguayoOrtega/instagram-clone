@@ -1,15 +1,27 @@
 //import react
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef, useState, useEffect, useContext } from 'react';
+//import context
+import { Context } from '../../utils/Context';
 //import Image styled component
-import { Image, PostContainer, PostText, PostHeader, Form } from './styles';
+import {
+	Image,
+	PostContainer,
+	PostText,
+	PostHeader,
+	Comments,
+	AddPadding,
+} from './styles';
 //import data base
 import { db } from '../../utils/firebase';
 //import material ui components
-import { Avatar, Input } from '@material-ui/core';
+import { Avatar, Input, Button, FormGroup } from '@material-ui/core';
 
 //create post component and export it
 export const Post = forwardRef(
 	({ userName, caption, imageUrl, postId }, ref) => {
+		//use context
+		const { user } = useContext(Context);
+		//use state hook
 		const [comments, setComments] = useState([]);
 		const [comment, setComment] = useState('');
 
@@ -30,6 +42,9 @@ export const Post = forwardRef(
 			};
 		}, [postId]);
 
+		//post comment function
+		const postComment = (event) => {};
+
 		return (
 			<>
 				{/*Post container*/}
@@ -49,13 +64,30 @@ export const Post = forwardRef(
 					<PostText>
 						<strong>{`${userName}: `}</strong> {caption}
 					</PostText>
-					<Form>
-						<Input
-							placeholder='Add a comment'
-							value={comment}
-							onChange={(e) => setComment(e.target.value)}
-						/>
-					</Form>
+					{/*read the comment*/}
+					<Comments>
+						{comments.map((comment) => (
+							<p>
+								<strong>{comment.userName}</strong> {comment.text}
+							</p>
+						))}
+					</Comments>
+
+					{/*Form to add comments*/}
+					{user && (
+						<AddPadding>
+						<FormGroup>
+							<Input
+								placeholder='Add a comment'
+								value={comment}
+								onChange={(e) => setComment(e.target.value)}
+							/>
+							<Button disabled={!comment} type='submit' onClick={postComment}>
+								Post
+							</Button>
+						</FormGroup>
+						</AddPadding>
+					)}
 				</PostContainer>
 			</>
 		);

@@ -32,7 +32,12 @@ export const PostHeader = styled.header`
 	font-size: 1.5rem;
 `;
 
-//create and export post header
-export const Form = styled.form`
+//comments
+export const Comments = styled.div`
+	padding: 1rem;
+`
 
-`;
+//add padding to input comment
+export const AddPadding = styled.div`
+	padding: 1rem;
+`
