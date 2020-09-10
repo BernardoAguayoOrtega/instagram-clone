@@ -7,7 +7,7 @@ import { db } from '../../utils/firebase';
 // import flip move
 import FlipMove from 'react-flip-move';
 //import posts container
-import { PostsContainer } from './styles';
+import './styles.css'
 
 //create posts component after export it
 export const Posts = () => {
@@ -28,7 +28,7 @@ export const Posts = () => {
 	}, []);
 
 	return (
-		<PostsContainer>
+		<div className='ListOfPosts'>
 			<FlipMove>
 				{posts.map(({ post, id }) => (
 					<Post
@@ -39,6 +39,6 @@ export const Posts = () => {
 					/>
 				))}
 			</FlipMove>
-		</PostsContainer>
+		</div>
 	);
 };
