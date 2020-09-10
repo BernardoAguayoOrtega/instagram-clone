@@ -43,7 +43,16 @@ export const Post = forwardRef(
 		}, [postId]);
 
 		//post comment function
-		const postComment = (event) => {};
+		const postComment = (event) => {
+			event.preventDefault();
+
+			db.collection('posts').doc(postId).collection('comments').add({
+				userName: user.displayName,
+				text: comment,
+			});
+
+			setComment('')
+		};
 
 		return (
 			<>
@@ -67,7 +76,7 @@ export const Post = forwardRef(
 					{/*read the comment*/}
 					<Comments>
 						{comments.map((comment) => (
-							<p>
+							<p key={comment}>
 								<strong>{comment.userName}</strong> {comment.text}
 							</p>
 						))}
@@ -76,16 +85,16 @@ export const Post = forwardRef(
 					{/*Form to add comments*/}
 					{user && (
 						<AddPadding>
-						<FormGroup>
-							<Input
-								placeholder='Add a comment'
-								value={comment}
-								onChange={(e) => setComment(e.target.value)}
-							/>
-							<Button disabled={!comment} type='submit' onClick={postComment}>
-								Post
-							</Button>
-						</FormGroup>
+							<FormGroup>
+								<Input
+									placeholder='Add a comment'
+									value={comment}
+									onChange={(e) => setComment(e.target.value)}
+								/>
+								<Button disabled={!comment} type='submit' onClick={postComment}>
+									Post
+								</Button>
+							</FormGroup>
 						</AddPadding>
 					)}
 				</PostContainer>
