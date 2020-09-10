@@ -31,3 +31,8 @@ export const PostHeader = styled.header`
 	padding: 1rem;
 	font-size: 1.5rem;
 `;
+
+//create and export post header
+export const Form = styled.form`
+
+`;
