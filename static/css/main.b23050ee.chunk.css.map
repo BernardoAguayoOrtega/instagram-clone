@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AACA,EACE,QAAQ,CACR,SACF,CAGA,KACE,cACF","file":"main.b23050ee.chunk.css","sourcesContent":["/*general styles*/\n*{\n  margin:0;\n  padding:0;\n}\n\n/*set rem size*/\nhtml{\n  font-size: 10px\n}"]}
