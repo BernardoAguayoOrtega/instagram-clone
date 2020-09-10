@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ab59fbc6fd0552ce0734d4f356cb99ca",
+    "revision": "5be00077b0fc04e09e62ce338539fa8b",
     "url": "/instagram-clone/index.html"
   },
   {
-    "revision": "006babc629f1a69b6197",
+    "revision": "db9874ad2a4e2fd4b65a",
     "url": "/instagram-clone/static/css/main.b23050ee.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/instagram-clone/static/js/2.ab3cba76.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "006babc629f1a69b6197",
-    "url": "/instagram-clone/static/js/main.c08d8ffb.chunk.js"
+    "revision": "db9874ad2a4e2fd4b65a",
+    "url": "/instagram-clone/static/js/main.e27dfda9.chunk.js"
   },
   {
     "revision": "02a87c1a75cba5191192",
