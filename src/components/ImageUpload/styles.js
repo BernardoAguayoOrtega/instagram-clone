@@ -6,10 +6,11 @@ export const Form = styled.form`
   display:flex;
   flex-direction: column;
   width:40%;
-  background: rgba(0,0,0,.5);
+  background: white;
   position: fixed;
   z-index: 1;
-  bottom: 1%;
+  bottom: 0;
   left: 30%;
   padding: 1rem;
+  border: .1rem solid lightgray;
 `
