@@ -77,8 +77,8 @@ export const Post = forwardRef(
 					</PostText>
 					{/*read the comment*/}
 					<Comments>
-						{comments.map((comment) => (
-							<p key={comment}>
+						{comments.map((comment, i) => (
+							<p key={i}>
 								<strong>{comment.userName}</strong> {comment.text}
 							</p>
 						))}

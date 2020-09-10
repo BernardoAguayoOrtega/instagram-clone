@@ -9,6 +9,9 @@ export const HeaderContainer = styled.div`
 	display:flex;
 	align-items: center;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	z-index: 2;
 `;
 
 //create logo component and export it
