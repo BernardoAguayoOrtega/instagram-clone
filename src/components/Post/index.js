@@ -12,7 +12,7 @@ import {
 	AddPadding,
 } from './styles';
 //import data base
-import { db } from '../../utils/firebase';
+import { db, timestamp } from '../../utils/firebase';
 //import material ui components
 import { Avatar, Input, Button, FormGroup } from '@material-ui/core';
 
@@ -33,6 +33,7 @@ export const Post = forwardRef(
 					.collection('posts')
 					.doc(postId)
 					.collection('comments')
+					.orderBy('timestamp','desc')
 					.onSnapshot((snapshot) => {
 						setComments(snapshot.docs.map((doc) => doc.data()));
 					});
@@ -49,6 +50,7 @@ export const Post = forwardRef(
 			db.collection('posts').doc(postId).collection('comments').add({
 				userName: user.displayName,
 				text: comment,
+				timestamp: timestamp()
 			});
 
 			setComment('')

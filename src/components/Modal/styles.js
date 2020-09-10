@@ -20,6 +20,11 @@ export const LoginContainer = styled.div`
 
 `;
 
+//export container
+export const Container = styled.div`
+	display: flex;
+`
+
 /**
  * @description: get the modal style (position)
  */

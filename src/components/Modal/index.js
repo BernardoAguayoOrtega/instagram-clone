@@ -13,9 +13,16 @@ import {
 	LoginContainer,
 	getModalStyle,
 	useStyles,
+	Container
 } from './styles';
 //import material ui components
-import { Modal as ModalMUI, Button, Input, FormGroup } from '@material-ui/core';
+import {
+	Modal as ModalMUI,
+	Button,
+	Input,
+	FormGroup,
+	Avatar,
+} from '@material-ui/core';
 
 export const Modal = () => {
 	//use the custom hook useStyles
@@ -85,15 +92,21 @@ export const Modal = () => {
 		<>
 			{/*Button to call the modal, depend of user display sign up or Log out*/}
 			{user ? (
-				<Button type='button' onClick={() => auth.signOut()}>
-					Logout
-				</Button>
+				<Container>
+					<Avatar alt={user.displayName} src='/static/images/avatar/1.jpg' />
+					<Button type='button' onClick={() => auth.signOut()}>
+						Logout
+					</Button>
+				</Container>
 			) : (
 				<LoginContainer>
-					<Button color="primary" type='button' onClick={() => setOpenSignIn(true)}>
+					<Button
+						color='primary'
+						type='button'
+						onClick={() => setOpenSignIn(true)}>
 						Sign In
 					</Button>
-					<Button color="secondary" type='button' onClick={() => setOpen(true)}>
+					<Button color='secondary' type='button' onClick={() => setOpen(true)}>
 						Sign Up
 					</Button>
 				</LoginContainer>
