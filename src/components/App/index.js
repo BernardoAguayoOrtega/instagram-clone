@@ -16,8 +16,8 @@ function App() {
 	return (
 		<AppContainer>
 			<Header />
-			{user && <ImageUpload />}
 			<Posts />
+			{user && <ImageUpload />}
 		</AppContainer>
 	);
 }

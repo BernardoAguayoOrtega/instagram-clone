@@ -74,7 +74,7 @@ export const ImageUpload = () => {
 				onChange={(e) => setCaption(e.target.value)}
 			/>
 			<Input type='file' onChange={handleChange} />
-			<Button onClick={handleUpload}>Upload</Button>
+			<Button variant='text' color='primary' onClick={handleUpload}>Upload</Button>
 		</Form>
 	);
 };
