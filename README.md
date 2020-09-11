@@ -43,4 +43,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-A short snippet describing the license ([MIT](http://opensource.org/licenses/mit-license.php), [Apache](http://opensource.org/licenses/Apache-2.0), etc.)
+A short snippet describing the license ([MIT](http://opensource.org/licenses/mit-license.php))
