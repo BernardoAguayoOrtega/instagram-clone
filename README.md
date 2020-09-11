@@ -5,13 +5,42 @@ React app that emulates instagram, created by React
 
 Go to [instagram-clone](https://bernardoaguayoortega.github.io/instagram-clone/) to see it.
 
-## Usage
-It's a lanidng page with some js code.
+## technologies used
 
-## Contributing
++ [React js](https://reactjs.org/)
++ [firebase](https://firebase.google.com/)
+
+## Motivation
+
+Just for improve my react skills
+
+## Requirements
+
++ [Node.js](https://nodejs.org/)
++ [React](https://facebook.github.io/react/)
+
+## Installation or Getting Started
+
+	git clone https://github.com/BernardoAguayoOrtega/instagram-clone/
+    cd README.md
+    npm install
+    npm start
+
+## Usage
+
+Show how to use the project or library.
+    
+## Reference
+
++ [react documentation](https://reactjs.org/)
+
+
+## Contributors
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+A short snippet describing the license ([MIT](http://opensource.org/licenses/mit-license.php), [Apache](http://opensource.org/licenses/Apache-2.0), etc.)
